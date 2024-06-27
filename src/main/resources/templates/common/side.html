@@ -1,0 +1,15 @@
+<nav xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" th:fragment="copy">
+    <a class="text-decoration-none" th:href="@{/}">
+        <span class="text-light p-1">日報管理システム</span>
+    </a>
+    <ul class="mt-3 mb-5">
+        <li sec:authorize="hasAuthority('ADMIN')">
+            <a class="text-light" th:href="@{/employees}">従業員</a>
+        </li>
+    </ul>
+    <form method="post" th:action="@{/logout}">
+        <div class="p-1">
+            <input type="submit" value="ログアウト" class="btn btn-light">
+        </div>
+    </form>
+</nav>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="h-100" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header :: head_fragment(title=従業員新規登録)"></head>
+
+<body class="h-100 overflow-hidden">
+    <div class="row h-100">
+        <div class="h-100 p-3 mb-2 bg-dark text-white col-sm-2">
+            <nav th:replace="common/side :: copy"></nav>
+        </div>
+
+        <div class="mt-3 h-100 col-sm-10">
+            <!-- コンテンツ -->
+            <div class="container-fluid p-0">
+                <h1 class="h3 mb-3">従業員 新規登録</h1>
+            </div>
+            <div class="col-12 col-xxl-6">
+
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form th:action="@{/employees/add}" th:object="${employee}" th:method="post">
+                                <div class="wizard wizard-success mb-4">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="code">社員番号</label>
+                                        <p class="mb-1"></p>
+                                        <div class="col-md-7">
+                                            <input class="form-control" type="text" th:field="*{code}" th:errorclass="err" id="code">
+                                            <span th:errors="*{code}" class="text-danger"></span>
+                                            <span th:if="${codeError} neq null" th:text="${codeError}" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="name">氏名</label>
+                                        <p class="mb-1"></p>
+                                        <div class="col-md-7">
+                                            <input class="form-control" type="text" th:field="*{name}" th:errorclass="err" id="name">
+                                            <span th:errors="*{name}" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="password">パスワード</label>
+                                        <p class="mb-1"></p>
+                                        <div class="col-md-7">
+                                            <input class="form-control" type="password" th:field="*{password}" th:errorclass="err" id="password">
+                                            <span th:if="${passwordError} neq null" th:text="${passwordError}" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="role">権限</label>
+                                        <p class="mb-1"></p>
+                                        <div class="col-md-4">
+                                            <select class="form-select" th:field="*{role}" id="role">
+                                                <option th:each="item:${T(com.techacademy.entity.Employee.Role).values()}" th:value="${item}" th:text="${item.getValue()}" th:selected="*{role} == ${item}">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-5">
+                                    <input type="submit" value="登録" class="btn btn-primary">
+                                    <a th:href="@{/employees}" class="btn btn-primary">戻る</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

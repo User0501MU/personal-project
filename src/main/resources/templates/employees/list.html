@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html class="h-100" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header :: head_fragment(title=従業員一覧)"></head>
+
+<body class="h-100 overflow-hidden">
+    <div class="row h-100">
+        <div class="h-100 p-3 mb-2 bg-dark text-white col-sm-2">
+            <nav th:replace="common/side :: copy"></nav>
+        </div>
+        <div class="mt-3 h-100 col-sm-10"> <!--ここの３つのクラスは、Bootstrapが提供するクラス-->
+            <!-- コンテンツ -->
+            <div class="container-fluid p-0">
+                <h1 class="h3 mb-3">従業員 一覧</h1>
+
+                <div class="row">
+                    <div class="col-xl-11">
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table table-striped w-100">
+                                    <thead>
+                                        <tr>
+                                            <th>社員番号</th>
+                                            <th>氏名</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="employee:${employeeList}">
+                                            <td class="align-middle" th:text="${employee.code}"></td>
+                                            <td class="align-middle" th:text="${employee.name}"></td>
+                                            <td class="align-middle"><a th:href="@{/employees/{code}/(code=${employee.code})}" class="btn btn-primary">詳細</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p class="mb-3" th:text="'（ 全' + ${listSize} + '件 ）'">
+                        <div>
+                            <a th:href="@{/employees/add}" class="btn btn-primary">登録</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
