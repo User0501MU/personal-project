@@ -29,7 +29,7 @@ public class EmployeeService {
 
 	// 従業員保存
 	@Transactional
-	public ErrorKinds save(Employee employee) {
+	public ErrorKinds save(Employee employee) {//+employeeクラス
 
 		// パスワードチェック
 		ErrorKinds result = employeePasswordCheck(employee);
@@ -55,7 +55,7 @@ public class EmployeeService {
 	// 従業員更新★6
 	// @Transactional アノテーションがついているので、このメソッドはトランザクションの管理下で実行されることが期待されています
 	@Transactional
-	public ErrorKinds save(String code, Employee employee) {
+	public ErrorKinds save(String code, Employee employee) {//+引数をcontrollerに渡す
 		// String code は従業員のコード（もしくはID主キー）を受け取るパラメータで、Employee employee
 		// は更新する従業員の情報を受け取るパラメータ
 		// パスワードチェック

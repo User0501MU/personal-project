@@ -1,5 +1,5 @@
 //MVCモデルのModel（CRUD要素）＝エンティティ
-//Service と Model にビジネスロジックを分けて書く
+//コアなルール
 package com.techacademy.entity;
 
 import java.time.LocalDateTime;

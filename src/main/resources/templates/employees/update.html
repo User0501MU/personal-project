@@ -25,7 +25,7 @@
 						</div>
 
 						<div class="card-body">
-							<form th:action="@{/employees/add}" th:object="${employee}" th:method="post">
+							<form th:action="@{/employees/{code}/update(code=${code})}" th:object="${employee}" th:method="post">
 								<div class="wizard wizard-success mb-4">
 
 									<div class="mb-3">
