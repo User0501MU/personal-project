@@ -28,7 +28,7 @@ public class ReportService {
 		this.reportRepository = reportRepository;
 	}
 
-//日報一覧表示処理★
+//日報一覧表示処理★?
 	public List<Report> findAll() {
 		return reportRepository.findAll();
 	}
@@ -61,7 +61,8 @@ public class ReportService {
 		// セッションから従業員情報を取得
 		Employee employee = userDetail.getEmployee();
 
-		// 日付重複チェック
+		// 日付重複チェック　
+		//複数の変数にまとめられる箱　findALLで全検索
 		List<Report> reportList = findAll();
 		for (Report regReport : reportList) {
 			if (regReport.getReportDate().equals(report.getReportDate())
